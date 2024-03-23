@@ -1,16 +1,13 @@
 import 'react-native-gesture-handler';
 import React, { useCallback } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
-import ChatListScreen from './screens/ChatListScreen';
+import AppNavigator from './navigation/AppNavigator';
 
 SplashScreen.preventAutoHideAsync();
-const Statck = createStackNavigator();
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -46,11 +43,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
-      <NavigationContainer>
-        <Statck.Navigator>
-          <Statck.Screen name='ChatList' component={ChatListScreen} />
-        </Statck.Navigator>
-      </NavigationContainer>
+      <AppNavigator />
     </SafeAreaProvider>
   );
 }
