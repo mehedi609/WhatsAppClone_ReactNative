@@ -13,6 +13,7 @@ import { Feather } from '@expo/vector-icons';
 
 import backgroundImage from '../assets/images/droplet.jpeg';
 import { colors } from '../constants/colors';
+import AppKeyboardAvoidingView from '../components/AppKeyboardAvoidingView';
 
 const ChatScreen = () => {
   const [messageText, setMessageText] = useState('');
@@ -23,11 +24,7 @@ const ChatScreen = () => {
 
   return (
     <SafeAreaView edges={['right', 'left', 'bottom']} style={styles.container}>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={100}
-      >
+      <AppKeyboardAvoidingView>
         <ImageBackground
           style={styles.imageBackground}
           source={backgroundImage}
@@ -69,7 +66,7 @@ const ChatScreen = () => {
             </TouchableOpacity>
           )}
         </View>
-      </KeyboardAvoidingView>
+      </AppKeyboardAvoidingView>
     </SafeAreaView>
   );
 };
